@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plan your event | Spoiled Catering</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+  <style>
+    #booking-title { color: var(--wine); }
+    .preview-ready { border-color: #53745a; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="wordmark" href="index.html">Spoiled</a>
+      <nav class="menu" aria-label="Main menu">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign-up</a>
+        <a href="about.html">About Us</a>
+      </nav>
+    </div>
+  </header>
+<main>
+  <section class="wrap hero" aria-labelledby="home-title">
+    <div>
+      <p class="eyebrow">Catering in Jeddah</p>
+      <h1 id="home-title">Bring Spoiled to your event.</h1>
+      <p class="intro">Compare our frozen yogurt and drinks packages, then put together your catering request in a few steps.</p>
+      <div class="actions">
+        <a class="button" href="#booking">Plan your event</a>
+        <a href="#packages">Compare packages</a>
+      </div>
+    </div>
+    <figure>
+      <img class="hero-image" src="assets/froyo.webp" alt="A Spoiled frozen yogurt cup being finished at an event">
+      <figcaption class="hero-caption">Frozen yogurt served from the Spoiled cart.</figcaption>
+    </figure>
+  </section>
+  <section class="section" id="packages" aria-labelledby="packages-title">
+    <div class="wrap">
+      <h2 id="packages-title">Catering packages</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>Choose the package that fits your event.</caption>
+          <thead><tr><th scope="col">Package</th><th scope="col">Included</th><th scope="col">Service</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Frozen Yogurt Only</th><td>Frozen yogurt and a toppings bar</td><td>4 hours</td></tr>
+            <tr><th scope="row">Frozen Yogurt + Drinks</th><td>Frozen yogurt, toppings, matcha and coffee</td><td>4 hours</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="booking" aria-labelledby="booking-title">
+    <div class="wrap">
+      <h2 id="booking-title">Plan your event</h2>
+      <p class="intro">Choose your package, date and number of guests. Review your details in the booking preview.</p>
+      <div class="booking-grid">
+        <form class="card" id="booking-form" method="post" novalidate>
+          <div class="field">
+            <label for="package">Catering package</label>
+            <select id="package" name="package" required>
+              <option value="yogurt">Frozen Yogurt Only</option>
+              <option value="drinks">Frozen Yogurt + Drinks</option>
+            </select>
+          </div>
+          <div class="field-pair">
+            <div class="field">
+              <label for="event-date">Event date</label>
+              <input id="event-date" name="eventDate" type="date" required>
+            </div>
+            <div class="field">
+              <label for="guests">Guest count</label>
+              <input id="guests" name="guests" type="number" min="20" max="1000" step="1" placeholder="20–1,000" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="occasion">Occasion</label>
+            <select id="occasion" name="occasion" required>
+              <option value="">Select an occasion</option>
+              <option>Private celebration</option><option>Corporate event</option><option>Campus event</option><option>Other</option>
+            </select>
+          </div>
+          <fieldset>
+            <legend>Optional add-ons</legend>
+            <label class="check"><input type="checkbox" name="addons" value="Premium Cart"> Premium Cart</label>
+            <label class="check"><input type="checkbox" name="addons" value="Photo booth"> Photo booth</label>
+          </fieldset>
+          <div class="actions">
+            <button class="button" type="submit" disabled>Prepare request</button>
+            <button class="button secondary" type="reset">Clear</button>
+          </div>
+          <p class="note" style="margin-bottom: 0">Class demo. Your request stays on this page.</p>
+          <p class="status" id="booking-status" role="status"></p>
+          <noscript><p>Enable JavaScript to use the booking preview.</p></noscript>
+        </form>
+        <article class="card" id="booking-preview" aria-labelledby="preview-title">
+          <h3 id="preview-title">Booking preview</h3>
+          <img id="package-image" class="preview-image" src="assets/froyo.webp" alt="Spoiled frozen yogurt in a serving cup">
+          <p id="package-description">Frozen yogurt served from the Spoiled cart with a toppings bar.</p>
+          <dl class="summary">
+            <div><dt>Package</dt><dd id="summary-package">Frozen Yogurt Only</dd></div>
+            <div><dt>Date</dt><dd id="summary-date">Select a date</dd></div>
+            <div><dt>Guests</dt><dd id="summary-guests">Enter guest count</dd></div>
+            <div><dt>Occasion</dt><dd id="summary-occasion">Select an occasion</dd></div>
+          </dl>
+          <div id="summary-addons" hidden><strong>Add-ons</strong><ul id="addon-list"></ul></div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <div class="footer-brand">
+        <img src="assets/cart-badge.webp" width="120" height="72" alt="Spoiled cart illustration" usemap="#spoiled-cart">
+        <map name="spoiled-cart" id="spoiled-cart">
+          <area shape="rect" coords="0,0,119,71" href="about.html" alt="About Spoiled Catering">
+        </map>
+        <a href="about.html">About Spoiled</a>
+      </div>
+      <p class="note">Frozen yogurt, matcha and coffee catering</p>
+    </div>
+  </footer>
+  <script>
+    const form = document.querySelector('#booking-form');
+    const preview = document.querySelector('#booking-preview');
+    form.addEventListener('booking:prepared', () => preview.classList.add('preview-ready'));
+    form.addEventListener('input', () => preview.classList.remove('preview-ready'));
+    form.addEventListener('reset', () => preview.classList.remove('preview-ready'));
+  </script>
+</body>
+</html>

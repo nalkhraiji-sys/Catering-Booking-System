@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login | Spoiled Catering</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+  <style>.account-title { font-size: clamp(2.6rem, 5vw, 4rem); }</style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="wordmark" href="index.html">Spoiled</a>
+      <nav class="menu" aria-label="Main menu">
+        <a href="index.html">Home</a>
+        <a href="login.html" aria-current="page">Login</a>
+        <a href="signup.html">Sign-up</a>
+        <a href="about.html">About Us</a>
+      </nav>
+    </div>
+  </header>
+<main class="wrap account-layout">
+  <section class="card" aria-labelledby="account-title">
+    <h1 id="account-title" class="account-title">Login</h1>
+    <p class="intro">Try the login form with sample details.</p>
+    <form id="account-form" method="post" novalidate>
+      <div class="field"><label for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" minlength="8" aria-describedby="password-tip" required>
+        <small id="password-tip">Use at least 8 characters.</small></div>
+      <button class="button" type="submit" disabled>Login</button>
+      <p class="status" id="account-status" role="status"></p>
+      <noscript><p>Enable JavaScript to use this form.</p></noscript>
+    </form>
+    <p class="note">New here? <a href="signup.html">Go to sign-up</a>.</p>
+  </section>
+  <img class="account-art" src="assets/froyo.webp" alt="Frozen yogurt served at a Spoiled catering event">
+</main>
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <div class="footer-brand">
+        <img src="assets/cart-badge.webp" width="120" height="72" alt="Spoiled cart illustration" usemap="#spoiled-cart">
+        <map name="spoiled-cart" id="spoiled-cart">
+          <area shape="rect" coords="0,0,119,71" href="about.html" alt="About Spoiled Catering">
+        </map>
+        <a href="about.html">About Spoiled</a>
+      </div>
+      <p class="note">Frozen yogurt, matcha and coffee catering</p>
+    </div>
+  </footer>
+</body>
+</html>
