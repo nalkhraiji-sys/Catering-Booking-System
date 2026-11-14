@@ -125,9 +125,12 @@ function setupAccount(form) {
     event.preventDefault();
     clearErrors(form, status);
     if (fullName && !fullName.value.trim()) {
-      showError(fullName, status, 'Enter your full name.');
-    } else if (!email.validity.valid) {
-      showError(email, status, 'Enter a valid email address.');
+      showError(fullName, status, 'Enter your full name.'); 
+} else if (
+  !email.validity.valid ||
+  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())
+) {
+  showError(email, status, 'Enter a valid email address.');
     } else if (password.value.trim().length < 8) {
       showError(password, status, 'Enter a password with at least 8 characters.');
     } else if (confirmation && confirmation.value !== password.value) {
