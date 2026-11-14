@@ -108,6 +108,16 @@ function setupAccount(form) {
   const password = form.elements.password;
   const fullName = form.elements.fullName;
   const confirmation = form.elements.confirmPassword;
+  const showPassword = document.querySelector('#show-password');
+  if (showPassword) {
+    showPassword.addEventListener('change', () => {
+      const type = showPassword.checked ? 'text' : 'password';
+      password.type = type;
+      if (confirmation) {
+        confirmation.type = type;
+      }
+    });
+  }
 
   form.addEventListener('input', () => clearErrors(form, status));
   form.addEventListener('submit', (event) => {
